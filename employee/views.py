@@ -26,10 +26,23 @@ def employee_form(request):
     employee_list = Employee.objects.all()
     return render(request, "employee_form.html", {'form':form})
 
-def employee_delete(request):
-    return
+def employee_delete(request, id):
+    employee = Employee.objects.get(id = id)
+    employee.delete()
+    return HttpResponseRedirect("/employee")
 
-def employee_show(request, emp_code):
-    employee = Employee.objects.get(emp_code=emp_code)
-    print(employee.mobile)
+def employee_show(request, id):
+    employee = Employee.objects.get(id=id)
     return render(request, 'employee_show.html', {"employee":employee})
+
+def employee_edit(request, id):
+    employee = Employee.objects.get(id = id)
+    form = EmployeeForm(instance=employee)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST,instance=employee)
+        if form.is_valid():
+            employee.save()
+            return HttpResponseRedirect("/employee")
+    else:
+        form = EmployeeForm(instance=employee)
+    return render(request, 'employee_update.html', {'form':form})

@@ -5,7 +5,7 @@
 <a href="{%url 'employee_form'%}">New Employee</a>
 {%for employee in employees%}
     <div class="">
-        <a href="{% url 'employee_show' employee.emp_code %}">{{id}}{{employee.fullname}}</a>
+        <a href="{% url 'employee_show' employee.id %}">{{employee.id}} {{employee.fullname}}</a>
     </div>
 {% endfor %}
 </div>
