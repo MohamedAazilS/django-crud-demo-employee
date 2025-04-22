@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div class="">
+<a href="{%url 'employee_form'%}">New Employee</a>
+{%for employee in employees%}
+    <div class="">
+        <a href="{% url 'employee_show' employee.emp_code %}">{{id}}{{employee.fullname}}</a>
+    </div>
+{% endfor %}
+</div>
+{%endblock content%}
