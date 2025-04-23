@@ -22,7 +22,7 @@ def employee_form(request):
             position = form.cleaned_data['position']
             )
             employee.save()
-            return HttpResponseRedirect("/employee")
+            return HttpResponseRedirect(f"/employee/{employee.id}")
     employee_list = Employee.objects.all()
     return render(request, "employee_form.html", {'form':form})
 
@@ -42,7 +42,7 @@ def employee_edit(request, id):
         form = EmployeeForm(request.POST,instance=employee)
         if form.is_valid():
             employee.save()
-            return HttpResponseRedirect("/employee")
+            return HttpResponseRedirect(f"/employee/{id}")
     else:
         form = EmployeeForm(instance=employee)
-    return render(request, 'employee_update.html', {'form':form})
+    return render(request, 'employee_update.html', {'form':form, 'employee':employee})

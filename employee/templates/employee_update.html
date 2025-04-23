@@ -5,5 +5,9 @@
 {%csrf_token%}
 {{form}}
 <button type="submit">Submit</button>
+<a style="text-decoration: none;" href="{% url 'employee_show' employee.id%}">
+    <button type="button" style="color: white;background-color: red;">Cancel</button>
+    </a>
+<button style="background-color: grey; color: white;" type="reset">Reset</button>
 </form>
 {%endblock content%}

@@ -2,10 +2,11 @@
 
 {%block content%}
 <div class="">
-<a href="{%url 'employee_form'%}">New Employee</a>
+<a style="text-decoration: none;" href="{%url 'employee_form'%}">New Employee</a>
+<h3 style="margin: 12px; margin-left: 6px;">Employee List</h3>
 {%for employee in employees%}
     <div class="">
-        <a href="{% url 'employee_show' employee.id %}">{{employee.id}} {{employee.fullname}}</a>
+        <a style="text-decoration: none;" href="{% url 'employee_show' employee.id %}">{{employee.fullname}} ({{employee.position}})</a>
     </div>
 {% endfor %}
 </div>

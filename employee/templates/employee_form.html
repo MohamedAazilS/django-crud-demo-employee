@@ -5,5 +5,9 @@
 {%csrf_token%}
 {{form}}
 <button type="submit">Submit</button>
+<a href="{% url 'employee_list'%}">
+    <button type="button" style="color: white;background-color: red;">Cancel</button>
+    </a>
 </form>
+
 {%endblock content%}
